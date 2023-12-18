@@ -2,21 +2,48 @@ import { FC } from 'react';
 import MUIAppBar from '@mui/material/AppBar';
 import type { AppBarProps as MUIAppBarProps } from '@mui/material/AppBar';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Box, IconButton, Toolbar } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
+import TextField from '../TextField';
+import SearchIcon from '@mui/icons-material/Search';
+import { AccountCircle, ShoppingCart } from '@mui/icons-material';
+import { ToolbarWrapper, SearchBarWrapper, StyledLogo } from './styles';
 
 interface AppBarProps extends MUIAppBarProps {}
 
 const AppBar: FC<AppBarProps> = () => {
   return (
-    <Box>
+    <>
       <MUIAppBar>
-        <Toolbar>
+        <ToolbarWrapper>
           <IconButton>
-            <MenuIcon />
+            <MenuIcon fontSize="large" />
           </IconButton>
-        </Toolbar>
+          <StyledLogo>
+            <Typography variant="h6">WallMart 000</Typography>
+          </StyledLogo>
+          <SearchBarWrapper>
+            <TextField
+              variant="outlined"
+              placeholder="Pesquisar..."
+              size="small"
+              InputProps={{
+                startAdornment: (
+                  <div style={{ marginRight: ' 8px' }}>
+                    <SearchIcon />
+                  </div>
+                ),
+              }}
+            />
+          </SearchBarWrapper>
+          <IconButton>
+            <AccountCircle fontSize="large" />
+          </IconButton>
+          <IconButton>
+            <ShoppingCart fontSize="large" />
+          </IconButton>
+        </ToolbarWrapper>
       </MUIAppBar>
-    </Box>
+    </>
   );
 };
 
